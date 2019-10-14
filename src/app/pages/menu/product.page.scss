@@ -1,0 +1,37 @@
+product-page {
+  .as-tags {
+    //TODO: FIX
+    //color: map-get($colors, as-text-muted);
+  }
+
+  .toolbar-title{
+    font-size: 6px;
+    font-family: cursive
+  }
+
+}
+.top-border {
+  border-top: 1px solid rgba(0, 0, 0, 0.13);
+}
+.no-border-bottom {
+  border-bottom: 0px;
+}
+
+
+div.item-inner{
+  border: 0!important;
+}
+
+ion-list-header{
+  background-color: #0C3537;
+  color:white;
+}
+
+.ion-padding-horizontal.inside{
+  background-color: #0C3537;
+  color:white;
+}
+.ion-padding-horizontal.inside h5{
+padding-top: 10px;
+    padding-bottom: 10px;
+}

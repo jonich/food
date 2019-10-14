@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Categories
+    </ion-title>
+
+
+    <ion-buttons slot="end">
+        <ion-button routerLink="/cart">
+          <ion-icon name="person" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+          <ion-button routerLink="/cart">
+            <ion-icon name="cart" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="margin-bottom: 0px; padding-bottom: 30px;">
+    <ion-card style="margin-top: 10px; border-radius: 0px; margin-bottom: 0px;"  *ngFor="let category of categories"  [routerLink]="'/products/'+category.id" >
+   
+      <ion-thumbnail style=" padding-left:5px;   position: absolute; top: 10px; width: 80px; height: 80px;" slot="start" class="ion-margin-end">
+        <ion-img [src]="category.myimage"></ion-img>
+      </ion-thumbnail>
+      <ion-label style="position: inherit;">
+        <h2 style=" font-family: cursive; padding-top:5px;  margin-left: 90px;">{{category.title}}</h2>
+        <p style="white-space: initial; min-height: 70px; padding-bottom: 10px; margin-left: 90px; font-family: cursive;">{{category.descr}}</p>
+      </ion-label>
+   
+  </ion-card>
+  </ion-list>
+  
+</ion-content>
+
+

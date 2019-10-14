@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Albums
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-card class="ion-text-wrap" [routerLink]="'/albums/' + album.id" *ngFor="let album of albums">
+    <div class="as-overlay"></div>
+    <img src="{{album.cover}}" />
+    <div class="card-title">{{album.title}}</div>
+    <div class="card-subtitle">{{album.description}}</div>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{event?.name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="event">
+    <div class="ion-padding">
+      <h2 *ngIf="event.name">{{event.name}}</h2>
+      <p class="as-note">
+        <ion-icon name="clock"></ion-icon> {{event.start_time | stringToDate | date: 'short'}} - {{event.end_time | stringToDate | date:
+        'h:mm a'}}
+        <br />
+        <ion-icon name="compass"></ion-icon> {{event.place.name}}
+      </p>
+    </div>
+    <div class="ion-text-center">
+      <img *ngIf="event.cover" src="{{event.cover.source}}" style="display: block; margin: auto" />
+    </div>
+
+    <div class="ion-padding">
+      <p *ngIf="event.description">{{event.description}}</p>
+
+      <p>{{event.category}}</p>
+    </div>
+
+    <div *ngIf="event.place">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon name="pin" slot="start" large></ion-icon>
+          <ion-label>
+            <h2>{{event.place.name}}</h2>
+            <p>{{event.place.location.street}}</p>
+            <p>{{event.place.location.city}}, {{event.place.location.zip}}, {{event.place.location.country}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding-horizontal">
+        <ion-button expand="full" (click)="getDirections(event.place.location)">Get Directions</ion-button>
+      </div>
+    </div>
+    <div class="ion-padding-horizontal ion-margin-bottom">
+      <ion-button expand="full" color="success" (click)="addToCalendar()">Add to Calendar</ion-button>
+    </div>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Dine in
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <h3 *ngIf="business">{{business.storeName}}</h3>
+    <p *ngIf="business">{{business.address}}</p>
+  </div>
+
+  <dynamic-form [controls]="controls" [form]="form" [submitted]="submitted" [initialModel]="initialModel"></dynamic-form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button size="large" (click)="submit()">
+        Submit
+        <ion-icon name="send" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

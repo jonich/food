@@ -1,0 +1,13 @@
+<ion-row class="as-tile-pair" *ngFor="let group of itemGroups">
+  <ion-col style="    padding: 10px 15px;" class="as-tile" *ngFor="let item of group">
+    <ion-card style="border-radius: 0;"  (click)="itemClicked(item)">
+      <img [src]="item.myimage" />
+      
+        <ion-label>
+          <h5 style="font-family: cursive; text-align: center; padding: 2px 2px; white-space:initial;">{{item.title}}</h5>
+          <h6 style="padding: 2px 2px; text-align: center; font-weight: bold;" *ngIf="item.price">{{item.price | money}}</h6>
+        </ion-label>
+     
+    </ion-card>
+  </ion-col>
+</ion-row>

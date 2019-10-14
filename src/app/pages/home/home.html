@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+
+      <div>
+        <img style="width: 30px; float:left;" src="https://cdn.e-food.gr/shop/1554083/logo" />
+        <div style="float:left; margin-left: 20px;">Street 211</div>
+     </div> 
+
+    </ion-title>
+    <ion-buttons slot="end">
+        <ion-button routerLink="/cart">
+          <ion-icon name="person" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+          <ion-button routerLink="/cart">
+            <ion-icon name="cart" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="getting-started">
+  <div class="featured-products" *ngIf="products.length">
+    <ion-slides pager>
+      <ion-slide *ngFor="let product of products" (click)="productTapped(product.product,product.id)">
+        <img [src]="product.myimage" />
+        <div class="product-title ion-text-wrap">
+          {{product.title}}
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <ion-item-divider style="background-color: #0C3537" >
+    <ion-label style="width:100%">
+      <p class="center" style="width:100%; color:white; font-family:cursive; text-align: center;" >Προσφορές</p> 
+    </ion-label>
+  </ion-item-divider>
+  
+
+  <ion-row class="as-tile-pair"  >
+    <ion-col style="  width: 50%;  padding: 10px 15px;" class="as-tile" size="6"  *ngFor="let item of tiles">
+      <ion-card style="border-radius: 0;"  (click)="productTapped(item.id,1)">
+        <img [src]="item.myimage" />
+        
+          <ion-label>
+            <h5 style="font-family: cursive; text-align: center; padding: 2px 2px; white-space:initial;">{{item.title}}</h5>
+            <h6 style="padding: 2px 2px; text-align: center; font-weight: bold;" >{{item.price}}</h6>
+          </ion-label>
+       
+          
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+ 
+ 
+</ion-content>

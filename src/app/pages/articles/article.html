@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      News
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="item">
+    <div class="ion-text-center">
+      <img src="{{item?.picture}}" />
+    </div>
+
+    <div class="news-item ion-padding">
+      <h2>{{item.title}}</h2>
+      <p>{{item.body}}</p>
+      <p><i>[{{item?.tags.join(', ')}}]</i></p>
+    </div>
+  </ng-container>
+</ion-content>

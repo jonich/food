@@ -1,0 +1,52 @@
+<ion-app>
+  <ion-split-pane contentId="content">
+    <ion-menu id="leftMenu" [disabled]="isSideMenuDisabled" type="overlay" contentId="content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Street 211</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-item
+            button
+            detail="false"
+            *ngFor="let p of genericPages; let last = last"
+          
+            (click)="openPage(p.url)"
+          >
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{ p.title }}
+            </ion-label>
+          </ion-item>
+
+
+          <ion-item button detail="false" *ngFor="let p of otherPages" (click)="openPage(p.url)">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{ p.title }}
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false" (click)="logOut()" lines="none" *ngIf="auth.authenticated && !auth.isEntered">
+            <ion-icon slot="start" [name]="'log-out'" (click)="openPage()"></ion-icon>
+            <ion-label>
+              Log out
+            </ion-label>
+          </ion-item>
+
+        
+
+         
+
+         
+
+        
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet main id="content" swipe-back-enabled="false"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

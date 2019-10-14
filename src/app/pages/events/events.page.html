@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Events
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item button detail="false" class="ion-text-wrap" *ngFor="let event of events" [routerLink]="'/events/' + event.id">
+      <ion-thumbnail slot="start">
+        <img class="as-thumb" *ngIf="event.cover" src="{{event.cover.source}}" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2 *ngIf="event.name">{{event.name}}</h2>
+        <p class="as-note">
+          <ion-icon name="clock"></ion-icon> {{event.start_time | stringToDate | date: 'short'}} - {{event.end_time | stringToDate | date:
+          'h:mm a'}}
+          <br />
+          <ion-icon name="compass"></ion-icon> {{event.place.name}}
+        </p>
+        <p *ngIf="event.description">{{event.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

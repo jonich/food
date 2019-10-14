@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar  color="primary" >
+    
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Take away
+    </ion-title>
+
+    <ion-buttons slot="end">
+        <ion-button routerLink="/cart">
+          <ion-icon name="person" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+          <ion-button routerLink="/cart">
+            <ion-icon name="cart" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <agm-map
+    *ngIf="map"
+    style="width: 100%; height: 50%;"
+    [latitude]="map.origin.latitude"
+    [longitude]="map.origin.longitude"
+    [zoom]="map.zoomLevel"
+  >
+    <agm-marker [latitude]="map.origin.latitude" [longitude]="map.origin.longitude"></agm-marker>
+  </agm-map>
+  <div class="ion-padding">
+    <h3 *ngIf="business">{{business.storeName}}</h3>
+    <ion-label>
+      <p class="as-address" *ngIf="business">{{business.address}}</p>
+    </ion-label>
+    <p>Submit your order and it will be ready to be picked up in about 30 minutes.</p>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button size="large" (click)="submit()">
+        Submit
+        <ion-icon name="send" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

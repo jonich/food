@@ -1,0 +1,14 @@
+.vscode/
+node_modules/
+dist/
+out-tsc/
+/*.json
+src/theme/*
+src/assets/
+src/*.json
+
+e2e/test-results/
+e2e/*.json
+
+backend-mock/data/
+backend-mock/*.json

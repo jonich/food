@@ -1,0 +1,97 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+          Contact Us
+      </ion-title>
+  
+      
+      <ion-buttons slot="end">
+          <ion-button routerLink="/cart">
+            <ion-icon name="person" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+  
+        <ion-buttons slot="end">
+            <ion-button routerLink="/cart">
+              <ion-icon name="cart" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+  
+  
+  
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <div>
+    <ion-slides>
+      <ion-slide>
+        <img src="https://scontent.fath3-3.fna.fbcdn.net/v/t1.0-9/34596876_2068905346712821_945110779005239296_n.jpg?_nc_cat=105&_nc_oc=AQkJG_JN9dr5Z1xIemM4VHJNoOQ3f_JNlEKQShw1EWWDDErjt19Z30UtQcrLz_mRvfs&_nc_ht=scontent.fath3-3.fna&oh=d6fe47007b9687fcaa682c20bb3ecad0&oe=5E650D07" />
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="ion-padding">
+    <h1>{{business?.storeName}}</h1>
+    <div>{{business?.address}}</div>
+    <h3>About Us</h3>
+    <p>{{business?.desc}}</p>
+  </div>
+
+  <ion-list *ngIf="business">
+    <ion-list-header>Open Hours</ion-list-header>
+
+    <ion-item *ngFor="let day of days">
+      <ion-label>
+        <h2>{{day.name}}</h2>
+        <!--<p><span *ngFor="let time of day.times">{{time}}</span></p>-->
+        <p>{{day.times.join(' | ')}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="business">
+    <ion-list-header>Contact Us</ion-list-header>
+
+    <ion-item button detail="false" (click)="call(business.phoneNumber)">
+      Call us
+      <ion-icon name="call" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="sendEmail(business.email)">
+      Send us email
+      <ion-icon name="mail" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="getDirections(business.officeLocation)">
+      Find us / Get directions
+      <ion-icon name="map" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="business">
+    <ion-list-header>Get Social With Us</ion-list-header>
+
+    <ion-item button detail="false" (click)="openUrl(business.facebookPage)">
+      Facebook
+      <ion-icon name="logo-facebook" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="openUrl(business.instagramPage)">
+      Instagram
+      <ion-icon name="logo-instagram" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="openUrl(business.twitterPage)">
+      Twitter
+      <ion-icon name="logo-twitter" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="openUrl(business.pinterestPage)">
+      Pinterest
+      <ion-icon name="logo-pinterest" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

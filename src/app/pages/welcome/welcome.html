@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-slides loop="false" *ngIf="items" [options]="slideOpts">
+    <ion-slide *ngFor="let item of items">
+      <img [src]="item.myimage" />
+    </ion-slide>
+  </ion-slides>
+
+  <div class="buttons-container ion-padding">
+    <ion-button expand="full" block (click)="enterTheApp()" color="primary">Σύνδεση</ion-button>
+  </div>
+</ion-content>

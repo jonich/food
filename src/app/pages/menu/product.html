@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="home" routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Product
+    </ion-title>
+    <ion-buttons slot="end">
+        <ion-button routerLink="/cart">
+          <ion-icon name="person" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+          <ion-button routerLink="/cart">
+            <ion-icon name="cart" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="product">
+    <div>
+      <ion-slides pager>
+        <ion-slide >
+          <img src="{{product.myimage}}" />
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="ion-padding-horizontal">
+      <h2>{{product.title}}</h2>
+     
+      <p>{{product.descr}}</p>
+
+     
+    
+    
+    </div>
+
+
+
+
+  
+
+    
+    <ion-list *ngIf="product.standardOptions?.length"  >
+      <ion-list-header class="top-border no-border-bottom">Options</ion-list-header>
+
+      <ion-item button detail="false" *ngFor="let option of product.standardOptions;" >
+        <ion-checkbox slot="start" ></ion-checkbox>
+        <ion-label>{{option.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+
+    
+
+    <div class="ion-padding-horizontal inside">
+      <h5>Επιλέξτε μέγεθος*</h5>
+    </div>
+
+    <ion-list>
+      <ion-radio-group [(ngModel)]="price">
+        
+        <ion-item button detail="false" *ngFor="let option of product.price; let last = last;" [attr.lines]="last ? 'none' : null">
+          <ion-label
+            >{{option.name}}
+            <p>{{option.value | money}}</p>
+          </ion-label>
+          <ion-radio  checked="true"  [value]="option"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+
+    <ion-list lines="none" *ngIf="product.extraOptions?.length">
+      <ion-list-header class="top-border no-border-bottom">Προσθέστε extra</ion-list-header>
+
+      <ion-item button detail="false" *ngFor="let option of product.extraOptions; let last = last;" [attr.lines]="last ? 'none' : null">
+        <ion-checkbox slot="start" [name]="option.name" [(ngModel)]="option.selected"></ion-checkbox>
+        <ion-label
+          >{{option.name}}
+          <p>{{option.value | money}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+
+
+
+
+
+
+
+
+    <div class="ion-padding-bottom">
+      
+
+      <ion-row class="ion-no-padding">
+        <ion-col>
+          <ion-button button expand="full"  (click)="addToCart()">
+            <ion-icon name="cart" slot="start"></ion-icon>
+            Add to cart
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button button expand="full" color="light" (click)="toggleFavorites()">
+            <ion-icon name="star" slot="start"></ion-icon>
+            {{ isInFavorites ? 'Remove from favs' : 'Add to favs' }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+
+
+
+  </div>
+</ion-content>

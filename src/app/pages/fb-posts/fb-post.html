@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerDirection="forward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{post?.story}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="post">
+    <div class="ion-padding">
+      <h2 *ngIf="post.story">{{post.story}}</h2>
+      <p class="as-note">
+        <ion-icon name="clock"></ion-icon> {{post.created_time | stringToDate | date : 'short'}}
+        <br />
+        <ion-icon name="pricetag"></ion-icon> {{post.type}}
+        <br />
+        <span *ngIf="post.from"> <ion-icon name="person"></ion-icon> {{post.from.name}} </span>
+      </p>
+    </div>
+    <div class="ion-text-center">
+      <img *ngIf="!!post.full_picture" src="{{post.full_picture}}" />
+    </div>
+
+    <div class="ion-padding">
+      <p class="place" *ngIf="post.place"><span>Place: </span>{{post.place.name}}</p>
+
+      <p>{{post.message}}</p>
+      <p *ngIf="post.description && post.description!=post.message">{{post.description}}</p>
+
+      <ion-button expand="full" *ngIf="post.link" (click)="openLink(post.link)"
+        >{{post.name}} <ion-icon name="arrow-dropright" slot="end"></ion-icon>
+      </ion-button>
+    </div>
+  </ng-container>
+</ion-content>

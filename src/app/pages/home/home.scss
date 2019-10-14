@@ -1,0 +1,23 @@
+.getting-started {
+	.featured-products {
+		position: relative;
+
+		.product-title {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: 0;
+			border: 0;
+			background: rgba(255, 255, 255, 0.6);
+			padding: 10px;
+			text-align: left;
+			height: 60px;
+		}
+	}
+}
+
+.toolbar-title{
+    font-size: 6px;
+    font-family: cursive;
+  }

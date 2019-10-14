@@ -1,0 +1,76 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+div.item-inner{
+  border: 0!important;
+}
+
+.card-background-page {
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+}
+
+h1.as-header-icon {
+  text-align: center;
+}
+
+h1.as-header-icon ion-icon {
+  font-size: 6em;
+}
+
+.as-tile-pair {
+  ion-col {
+    width: 50%;
+    &:last-child:first-child {
+      width: 100%;
+    }
+  }
+}
+
+.as-tile {
+  ion-card {
+    width: 100%;
+    margin: 0px;
+
+    img {
+      max-height: 150px;
+      object-fit: cover;
+    }
+  }
+}
+
+.as-quick-actions {
+  padding: 5px;
+
+  ion-card {
+    width: 100%;
+  }
+}
